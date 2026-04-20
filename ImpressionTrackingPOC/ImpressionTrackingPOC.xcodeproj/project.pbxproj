@@ -22,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		227A1B0000000000000003 /* ImpressionTrackingPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImpressionTrackingPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		227A1B0000000000000020 /* ImpressionTrackingPOCApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpressionTrackingPOCApp.swift; sourceTree = "<group>"; };
 		227A1B0000000000000021 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		227A1B0000000000000022 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
@@ -34,7 +35,6 @@
 		227A1B0000000000000029 /* PerformanceMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceMonitor.swift; sourceTree = "<group>"; };
 		227A1B0000000000000040 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		227A1B0000000000000042 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		227A1B0000000000000003 /* ImpressionTrackingPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImpressionTrackingPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +56,22 @@
 			);
 			sourceTree = "<group>";
 		};
+		227A1B0000000000000005 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				227A1B0000000000000003 /* ImpressionTrackingPOC.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		227A1B0000000000000010 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				227A1B0000000000000042 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		227A1B0000000000000011 /* ImpressionTrackingPOC */ = {
 			isa = PBXGroup;
 			children = (
@@ -73,22 +89,6 @@
 				227A1B0000000000000010 /* Preview Content */,
 			);
 			path = ImpressionTrackingPOC;
-			sourceTree = "<group>";
-		};
-		227A1B0000000000000005 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				227A1B0000000000000003 /* ImpressionTrackingPOC.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		227A1B0000000000000010 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				227A1B0000000000000042 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,6 +298,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ImpressionTrackingPOC/Preview Content\"";
+				DEVELOPMENT_TEAM = J3NV8LKXJU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -323,6 +324,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ImpressionTrackingPOC/Preview Content\"";
+				DEVELOPMENT_TEAM = J3NV8LKXJU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
