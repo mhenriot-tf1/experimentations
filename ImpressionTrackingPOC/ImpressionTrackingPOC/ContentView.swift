@@ -43,6 +43,7 @@ struct ContentView: View {
                     set: { newVal in
                         store.currentApproach = newVal
                         store.reset()
+                        perfMonitor.resetPerfStats()
                     }
                 )) {
                     ForEach(TrackingApproach.allCases, id: \.self) { approach in
@@ -59,6 +60,7 @@ struct ContentView: View {
                     set: { newVal in
                         store.isStressTest = newVal
                         store.reset()
+                        perfMonitor.resetPerfStats()
                     }
                 )) {
                     Label("Stress Test", systemImage: "bolt.fill")

@@ -22,6 +22,7 @@ struct ApproachBTracker: ViewModifier {
                 }
             )
             .onPreferenceChange(FramePreferenceKey.self) { frame in
+                store.incrementGeometryCallbacks()
                 guard isAtLeastHalfVisible(frame: frame, cardSize: cardSize) else { return }
                 store.trackItemApproachB(railIndex: railIndex, itemIndex: itemIndex)
             }

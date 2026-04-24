@@ -39,6 +39,12 @@ class ImpressionStore: ObservableObject {
     // For Approach A: when onAppear fired
     private var approachAFireTimes: [ItemKey: Date] = [:]
 
+    // Count of GeometryReader preference-change callbacks (proxy for layout overhead)
+    @Published private(set) var geometryCallbackCount: Int = 0
+
+    // Session start time (for impressions/s rate)
+    private var sessionStart: Date = Date()
+
     // Computed stats
     var totalItems: Int {
         isStressTest ? 15 * 50 : 6 * 20
@@ -69,6 +75,43 @@ class ImpressionStore: ObservableObject {
         }
         guard !delays.isEmpty else { return 0.0 }
         return delays.reduce(0, +) / Double(delays.count)
+    }
+
+    /// Largest observed delay between onAppear and true visibility (Approach A only).
+    var maxTrackingDelay: Double {
+        guard currentApproach == .approachA else { return 0.0 }
+        return trackedItems.compactMap { key -> Double? in
+            guard let appearTime = approachAFireTimes[key],
+                  let visibleTime = groundTruthFirstVisible[key] else { return nil }
+            let d = visibleTime.timeIntervalSince(appearTime)
+            return d > 0 ? d : nil
+        }.max() ?? 0.0
+    }
+
+    /// Percentage of tracked items that were actually visible (100% for B, <100% for A if FPs exist).
+    var precisionPercent: Double {
+        guard trackedCount > 0 else { return 100.0 }
+        let correct = trackedCount - falsePositiveCount
+        return Double(max(correct, 0)) / Double(trackedCount) * 100.0
+    }
+
+    /// False-positive rate as a percentage of tracked items.
+    var falsePositivePercent: Double {
+        guard trackedCount > 0 else { return 0.0 }
+        return Double(falsePositiveCount) / Double(trackedCount) * 100.0
+    }
+
+    /// Impressions tracked per second since session start.
+    var impressionsPerSecond: Double {
+        let elapsed = Date().timeIntervalSince(sessionStart)
+        guard elapsed > 0 else { return 0 }
+        return Double(trackedCount) / elapsed
+    }
+
+    // MARK: - Geometry callback counter (proxy for layout overhead)
+
+    func incrementGeometryCallbacks() {
+        geometryCallbackCount += 1
     }
 
     // MARK: - Approach A tracking
@@ -125,5 +168,7 @@ class ImpressionStore: ObservableObject {
         groundTruthVisible = []
         groundTruthFirstVisible = [:]
         approachAFireTimes = [:]
+        geometryCallbackCount = 0
+        sessionStart = Date()
     }
 }
